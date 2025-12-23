@@ -1,24 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import YourCart from "./Component/Small_business/Your_Cart.js"
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './Component/Header';
+import Footer from './Component/Footer';
+import "./App.css"
+import Viewdetail from "./Component/Small_business/View_detail.js";
+import Newproduct from './Component/Small_business/New_Product.js';
+import Orderdetail from './Component/Small_business/Order_detail.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <BrowserRouter>
+    <Header></Header>
+    <Routes>
+      <Route path="/" element={<YourCart />} />
+      <Route path="/yourcart" element={<YourCart></YourCart>}/>
+      <Route path='/viewdetail' element={<Viewdetail></Viewdetail>}/>
+      <Route path="/Newproduct" element={<Newproduct></Newproduct>}></Route>
+      <Route path="/orderdetail" element={<Orderdetail></Orderdetail>}></Route>
+    </Routes>
+    <Footer></Footer>
+    
+    </BrowserRouter>
+    </>
   );
 }
 

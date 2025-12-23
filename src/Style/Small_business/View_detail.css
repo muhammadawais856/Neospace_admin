@@ -1,0 +1,261 @@
+/* ===============================
+   MAIN CONTAINER
+================================ */
+.product_detail_main {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+
+  display: flex;              
+  align-items: flex-start;
+  gap: 15px;
+}
+
+/* ===============================
+   BACK ARROW (LEFT SIDE)
+================================ */
+.arrow_detail {
+  font-size: 24px;
+  cursor: pointer;
+  flex-shrink: 0;            
+  padding-top: 8px;
+  margin-top: 10px;
+}
+
+/* ===============================
+   OUTER CONTENT
+================================ */
+.product_detail_outer {
+  flex: 1;                    
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ===============================
+   TOP TITLE ROW
+================================ */
+.product_detail_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* ===============================
+   IMAGE + DETAIL ROW
+================================ */
+.product_detail_left_right {
+  display: flex;
+  gap: 30px;
+  align-items: stretch;  /* make left & right same height */
+}
+
+/* ===============================
+   LEFT SIDE (IMAGES)
+================================ */
+.product_detail_left {
+  flex: 1;                  
+  border-radius: 20px;      
+  overflow: hidden;         
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Main image */
+.product_detail_item_mainimg img {
+  width: 100%;
+  height: 400px;             
+  object-fit: cover;
+  border-radius: 20px;      
+  cursor: pointer;
+}
+
+/* Sub images row */
+.product_detail_item_subimg {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Sub images hover effect */
+.product_detail_item_subimg img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.product_detail_item_subimg img:hover {
+  border-color: #007bff;
+}
+
+/* ===============================
+   IMAGE ROWS (editable thumbnails)
+================================ */
+.image_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px dashed #ccc;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+/* Buttons for select/delete */
+.button_div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+/* Preview box for each image row */
+.image_preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  background-color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image_preview img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* ===============================
+   RIGHT SIDE (DETAIL FORM)
+================================ */
+.product_detail_right {
+  flex: 1;                  
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  background-color: var(--card_color, #f9f9f9);
+  border-radius: 20px;      
+  box-sizing: border-box;
+}
+
+/* Input groups */
+.product_detail_name,
+.product_detail_description,
+.product_detail_price {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.product_detail_name_text,
+.product_detail_description_text,
+.product_detail_price_text {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Inputs and textarea */
+.product_detail_name_input,
+.product_detail_price_input,
+.product_detail_description_textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+/* Readonly style */
+.product_detail_name_input[readonly],
+.product_detail_price_input[readonly],
+.product_detail_description_textarea[readonly] {
+  background-color: #f5f5f5;
+}
+
+/* ===============================
+   SAVE BUTTON
+================================ */
+.save {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+/* Disabled button state */
+button:disabled {
+  background-color: #e0e0e0 !important;
+  border-color: #c0c0c0 !important;
+  color: #888 !important;
+  cursor: not-allowed;
+}
+
+/* Optional: prevent hover effect when disabled */
+button:disabled:hover {
+  background-color: #e0e0e0;
+}
+
+
+/* ===============================
+   RESPONSIVE (700px & BELOW)
+================================ */
+@media (max-width: 700px) {
+  .product_detail_main {
+    
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
+
+  .product_detail_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 0;
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  .arrow_detail {
+    position: absolute;
+  }
+
+  .product_detail_left_right {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    margin: 15px 0 0 0;
+  }
+
+  .product_detail_left {
+    width: 100%;
+    margin: 0;
+  }
+
+  .product_detail_left img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+  }
+
+  .product_detail_right {
+    width: 100%;
+    margin: 0;
+  }
+
+  .product_detail_outer {
+    gap: 0px !important;
+  }
+}
