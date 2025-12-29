@@ -8,6 +8,7 @@ import "./App.css"
 import Viewdetail from "./Component/Small_business/View_detail.js";
 import Newproduct from './Component/Small_business/New_Product.js';
 import Orderdetail from './Component/Small_business/Order_detail.js';
+import Request_detail from './Component/Small_business/Request_detail.js';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path='/viewdetail' element={<Viewdetail></Viewdetail>}/>
       <Route path="/Newproduct" element={<Newproduct></Newproduct>}></Route>
       <Route path="/orderdetail" element={<Orderdetail></Orderdetail>}></Route>
+      <Route path="/requestdetail" element={<Request_detail></Request_detail>}></Route>
     </Routes>
     <Footer></Footer>
     

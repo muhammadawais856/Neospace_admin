@@ -88,8 +88,13 @@ const orders = [
   }
 ];
 
-
-
+const requests = [
+  { id: "REQ-001", name: "Awais", date: "2025-12-28", time: "11:30 AM", type: "Birthday", status: "approved" },
+  { id: "REQ-002", name: "Ali", date: "2025-12-27", time: "02:00 PM", type: "Carpool", status: "not approved" },
+  { id: "REQ-003", name: "Sara", date: "2025-12-26", time: "05:15 PM", type: "Small Business", status: "rejected" },
+  { id: "REQ-004", name: "Usman", date: "2025-12-25", time: "09:45 AM", type: "Birthday", status: "approved" },
+  { id: "REQ-005", name: "Hamza", date: "2025-12-24", time: "06:00 PM", type: "Carpool", status: "not approved" },
+];
 
 
 function YourCart() {
@@ -97,8 +102,6 @@ function YourCart() {
   const navigate = useNavigate();
 
   return (
-    <>
-
     <div className="cart_main">
         <div className="cart_outer">
             <div className="product_btn">
@@ -111,25 +114,17 @@ function YourCart() {
                 <button className={`tab-btn ${activeTab === "order" ? "active" : ""}`}
                     onClick={() => setActiveTab("order")}> Order
                 </button>
+                <button className={`tab-btn ${activeTab === "request" ? "active" : ""}`}
+                    onClick={() => setActiveTab("request")}> Requests
+                </button>
             </div>
             <div className="main-content">
-                {activeTab === "product" && (
-                <div id="product" className="screen active">
-                    <Product></Product>
-                </div>
-                 )}
-                {activeTab === "order" && (
-                <div id="order" className="screen active">
-                    <Order orders={orders}></Order>
-                </div>
-                )}
+                {activeTab === "product" && <Product />}
+                {activeTab === "order" && <Order orders={orders} />}
+                {activeTab === "request" && <Request requests={requests} />}
             </div>
-
         </div>
-
     </div>
-      
-    </>
   );
 }
 
@@ -137,106 +132,58 @@ export default YourCart;
 
 function Product() {
     const navigate = useNavigate();
-  return (
-    <div className="product_main">
-
-      <div className="product_card_components">
-        {products.map((product) => (
-          <div key={product.id} className="product_card">
-            <img src={product.img} alt={product.name} className="product_card_img" />
-            
-            <div className="product_card_detail">
-              <div className="product_card_name">{product.name}</div>
-              <div className="product_card_description">{product.description}</div>
-              <div className="product_card_prices">
-                <div className="product_card_PKR">PKR</div>
-                <div className="product_card_price">{product.price}</div>
+    return (
+      <div className="product_main">
+        <div className="product_card_components">
+          {products.map((product) => (
+            <div key={product.id} className="product_card">
+              <img src={product.img} alt={product.name} className="product_card_img" />
+              <div className="product_card_detail">
+                <div className="product_card_name">{product.name}</div>
+                <div className="product_card_description">{product.description}</div>
+                <div className="product_card_prices">
+                  <div className="product_card_PKR">PKR</div>
+                  <div className="product_card_price">{product.price}</div>
+                </div>
+              </div>
+              <div className="product_detail">
+                  <button  onClick={() => navigate("/viewdetail")}
+                  className="primary-btn">View Detail</button>
               </div>
             </div>
-
-            <div className="product_detail">
-                <button  onClick={() => navigate("/viewdetail")}
-                className="primary-btn">View Detail</button>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
 }
-
 
 function Order({ orders }) {
   const navigate = useNavigate();
-
   const [statusFilter, setStatusFilter] = useState("all");
-  const [dateFilter, setDateFilter] = useState("all");
   const [selectedDate, setSelectedDate] = useState("");
   const [searchId, setSearchId] = useState("");
 
-  // FILTER LOGIC
   const filteredOrders = orders.filter((order) => {
-    // status filter
-    if (statusFilter !== "all" && order.status !== statusFilter) {
-      return false;
-    }
-
-    // date filter
-    if (selectedDate && order.date !== selectedDate) {
-  return false;
-}
-
-
-    // search by id
-    if (searchId && !order.id.toString().includes(searchId)) {
-      return false;
-    }
-
+    if (statusFilter !== "all" && order.status !== statusFilter) return false;
+    if (selectedDate && order.date !== selectedDate) return false;
+    if (searchId && !order.id.toString().includes(searchId)) return false;
     return true;
   });
 
   return (
     <div className="order_main">
-
-      {/* ===== FILTER ROW ===== */}
       <div className="order_filter_row">
-        
-        {/* Status Dropdown */}
-        <select
-          value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
-        >
+        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
           <option value="all">All</option>
           <option value="delivered">Delivered</option>
           <option value="processed">Processed</option>
         </select>
 
-        {/* Date Filter */}
-        <input
-  type="date"
-  value={selectedDate}
-  onChange={(e) => setSelectedDate(e.target.value)}
-/>
+        <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
 
-
-        {dateFilter === "date" && (
-          <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
-          />
-        )}
-
-        {/* Search by ID */}
-        <input
-          type="text"
-          placeholder="Search by Order ID"
-          value={searchId}
-          onChange={(e) => setSearchId(e.target.value)}
-        />
+        <input type="text" placeholder="Search by Order ID" value={searchId} onChange={(e) => setSearchId(e.target.value)} />
       </div>
 
-      {/* ===== TABLE ===== */}
       <table className="order_table">
         <thead>
           <tr>
@@ -250,7 +197,6 @@ function Order({ orders }) {
             <th>Detail</th>
           </tr>
         </thead>
-
         <tbody>
           {filteredOrders.map((order) => (
             <tr key={order.id}>
@@ -258,18 +204,11 @@ function Order({ orders }) {
               <td>{order.items}</td>
               <td>{order.price}</td>
               <td>{order.orderedBy}</td>
-              <td className={`status-badge ${order.status}`}>
-                  {order.status}
-              </td>
+              <td className={`status-badge ${order.status}`}>{order.status}</td>
               <td>{order.date}</td>
               <td>{order.time}</td>
               <td>
-                <button
-                  className="primary-btn"
-                  onClick={() => navigate(`/orderdetail`)}
-                >
-                  Detail
-                </button>
+                <button className="primary-btn" onClick={() => navigate(`/orderdetail`)}>Detail</button>
               </td>
             </tr>
           ))}
@@ -281,6 +220,76 @@ function Order({ orders }) {
 
 
 
+function Request({ requests }) {
+  const navigate = useNavigate();
+
+  const [statusFilter, setStatusFilter] = useState("all");
+  const [typeFilter, setTypeFilter] = useState("all");
+
+  // Filter logic
+  const filteredRequests = requests.filter((req) => {
+    if (statusFilter !== "all" && req.status !== statusFilter) return false;
+    if (typeFilter !== "all" && req.type !== typeFilter) return false;
+    return true;
+  });
+
+  return (
+    <div className="order_main">
+      {/* ===== FILTER ROW ===== */}
+      <div className="order_filter_row">
+        {/* Status Filter */}
+        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+          <option value="all">All Status</option>
+          <option value="approved">Approved</option>
+          <option value="not approved">Not Approved</option>
+          <option value="rejected">Rejected</option>
+        </select>
+
+        {/* Type Filter */}
+        <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
+          <option value="all">All Types</option>
+          <option value="Birthday">Birthday</option>
+          <option value="Carpool">Carpool</option>
+          <option value="Small Business">Small Business</option>
+        </select>
+      </div>
+
+      {/* ===== TABLE ===== */}
+      <table className="order_table">
+        <thead>
+          <tr>
+            <th>Request ID</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>More Info</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredRequests.map((req) => (
+            <tr key={req.id}>
+              <td>{req.id}</td>
+              <td>{req.name}</td>
+              <td>{req.type}</td>
+              <td>{req.date}</td>
+              <td>{req.time}</td>
+              <td className={`status-badge ${req.status.replace(" ", "-")}`}>{req.status}</td>
+              <td>
+                <button
+  className="primary-btn"
+  onClick={() => navigate("/requestdetail", { state: { request: req } })}
+>
+  Detail
+</button></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 
 
