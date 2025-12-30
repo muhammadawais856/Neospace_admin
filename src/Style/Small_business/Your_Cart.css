@@ -261,23 +261,3 @@
 
 }
 
-/*============================
- REQUEST
- ============================= 
-*/
-
-/* Request status badge */
-.status-badge.approved {
-  /* background-color: #1f9254; */
-  color: #1f9254;
-}
-
-.status-badge.not-approved {
-  /* background-color: #ef6c00; */
-  color: #ef6c00;
-}
-
-.status-badge.rejected {
-  /* background-color: #d32f2f; */
-  color: #d32f2f;
-}
