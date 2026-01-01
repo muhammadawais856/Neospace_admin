@@ -1,0 +1,163 @@
+/* ---------------- GENERAL ---------------- */
+.nust_admin_main {
+  max-width: 1250px;
+  margin: auto;
+  padding: 20px;
+  
+}
+
+.nust_admin_sidebar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.nust_admin_sidebar button {
+  padding: 10px 20px;
+  border: none;
+  background: #eee;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nust_admin_sidebar button:hover {
+  background: #ddd;
+}
+
+.nust_admin_sidebar .active {
+  background: #007bff;
+  color: #fff;
+}
+
+/* ---------------- PRODUCT GRID ---------------- */
+.nust_admin_product_main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Scrollable container for all rows */
+.for_scroll {
+  overflow-x: auto;           /* horizontal scroll */
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+/* Each product row */
+.nust_admin_product_row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr 30px; /* name | price | unit | image */
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+  min-width: 700px;            /* ensures row is wide enough to scroll */
+}
+
+/* Inputs and select */
+.nust_admin_product_row input,
+.nust_admin_product_row select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* File input wrapper */
+.nust_admin_product_row div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Image preview */
+.product_img_preview {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Buttons */
+.delete_icon{
+    cursor: pointer;
+    color: red;
+
+}
+
+.save_btn {
+  display: block;
+  margin: 20px auto;
+}
+
+/* ---------------- ORDER TABLE ---------------- */
+.nust_admin_order_main {
+  overflow-x: auto;          /* allow horizontal scroll for table */
+}
+
+.nust_admin_order_table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.nust_admin_order_table th,
+.nust_admin_order_table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  white-space: nowrap;       /* prevent wrapping */
+}
+
+.nust_admin_order_table th {
+  background: #f4f4f4;
+}
+
+.status.delivered {
+  color: #1f9254;
+  font-weight: bold;
+}
+
+.status.processed {
+  color: #ef6c00;
+  font-weight: bold;
+}
+
+/* ---------------- FILE INPUT BUTTON ---------------- */
+.file_btn {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.file_btn:hover {
+  background-color: #0056b3;
+}
+
+.file_btn input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 768px) {
+  .nust_admin_product_row {
+    min-width: 600px;        /* smaller min-width for mobile */
+  }
+}

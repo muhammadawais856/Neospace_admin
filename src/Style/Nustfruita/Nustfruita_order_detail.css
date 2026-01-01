@@ -1,0 +1,96 @@
+.order_detail_main {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #fdfdfd;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  
+}
+.order_detail_admin{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.order_detail_main h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.order_info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.order_info p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.status {
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-weight: bold;
+  
+}
+
+.status.delivered {
+  color: #41a801;
+}
+
+.status.pending {
+  color: #ffc107;
+}
+
+.status.cancelled {
+  color: #dc3545;
+}
+
+.order_items_table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.order_items_table th, 
+.order_items_table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.order_items_table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.total_price {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.total_price h3 {
+  color: #333;
+}
+
+.order_actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+
+
+@media (max-width: 600px) {
+  .order_info {
+    grid-template-columns: 1fr;
+  }
+
+  .order_actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

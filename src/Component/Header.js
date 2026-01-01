@@ -14,17 +14,7 @@ function Header(){
             <div className='headerimg'>
                 <img src={logo} className='logo' alt="NeoSpace logo"/>
             </div>
-            <div className='header_icons'>
-                <Link to="/" className='header_icon_link'>
-                    <FaHome />
-                </Link>
-                <Link to="/profile" className='header_icon_link'>
-                    <BsPersonCircle />
-                </Link>
-                <Link to="/yourcart" className='header_icon_link'>
-                    <FiShoppingBag />
-                </Link>
-            </div>
+            
         </header>
         </>
     )
