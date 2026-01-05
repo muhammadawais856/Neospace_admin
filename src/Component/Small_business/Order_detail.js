@@ -8,7 +8,7 @@ function Orderdetail(){
     return(
         <>
         <div className="cart_main">
-            <div className="cart_home_icon" onClick={() => navigate('/')}>
+            <div className="cart_home_icon" onClick={() => navigate('/yourcart')}>
                 
                 <FaArrowLeft />
             </div>

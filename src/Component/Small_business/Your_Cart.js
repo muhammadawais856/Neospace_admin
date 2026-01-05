@@ -99,6 +99,9 @@ function YourCart() {
     <div className="cart_main">
         <div className="cart_outer">
             <div className="product_btn">
+              <div className="retailer_shop_name">
+                   Ali Fast Food
+              </div>
                 <button onClick={() => navigate("/Newproduct")} className="primary-btn2">New Product</button>
             </div>
             <div className="sidebar">

@@ -44,7 +44,7 @@ function Viewdetail() {
 
   return (
     <div className="product_detail_main">
-      <div className="arrow_detail" onClick={() => navigate('/')}>
+      <div className="arrow_detail" onClick={() => navigate('/yourcart')}>
         <FaArrowLeft />
       </div>
 

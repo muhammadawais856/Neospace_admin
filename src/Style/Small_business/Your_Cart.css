@@ -13,13 +13,21 @@
   gap: 20px;
 }
 
+.retailer_shop_name{
+  font-size: 32px;
+  font-weight: bold;
+  display: flex;
+}
+
 
 /* Arrow back */
 .product_btn {
   display: flex;
-  justify-content: flex-end; /* aligns content to the right */
-        /* optional spacing below */
+  justify-content: space-between;  /* title left, button right */
+  align-items: center;
+  width: 100%;
 }
+
 
 /* Sidebar tabs */
 .sidebar {
